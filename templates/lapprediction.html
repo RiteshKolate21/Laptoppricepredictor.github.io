@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Price Prediction Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar bg-primary navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Laptop Price Prediction Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/lap-prediction">Laptop Price Prediction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/lap-price-prediction-result">Laptop Price Prediction Result</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="bg-image" 
+    style="background-image: url('/static/builtin/31.jpg');">
+   <!-- <div class="bg-dark"> -->
+    <div class="container">
+        <div class="card mt-50" style="width:100%; height:100%;">
+
+            <div class="card header mt-3 bg-info" style="text-align: center;">
+                    <h1>Welcome to Laptop Price Prediction</h1>
+                 </div>
+           
+        <div class="row">
+            <div class="col-lg-12 mx-4 ">
+                <p><h6>This project is developed using Multiple Linear Regression Model.
+                   It takes input as Company,Type of Laptop,Ram,Weight,Touchscreen,Ips,ppi,Cpu Brand,HDD,
+                   SSD,Gpu Brand,Operating System and predicts possible price for the 
+                   Laptop.
+                </h6></p>
+            </div>
+            <div class="col-lg-12 mx-4">
+                <form action="/lap-price-prediction-result" method="get">
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            Company
+                        </div>
+                        <div class="col-7 ">
+                            <select class="form-control" name="Company" required>
+                                <option value="">Select Company</option>
+                                {% for Company in companies %}
+                                    <option value="{{ Company }}">{{ Company }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            Type
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="TypeName" required>
+                                <option value="">Select Type</option>
+                                {% for TypeName in TypeName %}
+                                    <option value="{{ TypeName }}">{{ TypeName }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            Ram
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="Ram" required>
+                                <option value="">Select Ram</option>
+                                {% for Ram in Rams %}
+                                    <option value="{{ Ram }}">{{ Ram }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            Weight
+                        </div>
+                        <div class="col-7">
+                        
+                                <input type="number" step="0.01" class="form-control" name="Weight"  required/>
+                                
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            Touchscreen 
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="Touchscreen" required>
+                                <option value="">Select Touchscreen</option>
+                                <option value="1">yes</option>
+                                <option value="0">no</option>
+                               
+                            </select>
+                        </div>                        
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            IPS 
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="Ips" required>
+                                <option value="">Select Ips</option>
+                                <option value="1">yes</option>
+                                <option value="0">no</option>
+                               
+                            </select>
+                        </div>                        
+                    </div>
+                    <!-- ************new***************** -->
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            PPI
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="ppi" required>
+                                <option value="">ppi </option>
+                                {% for ppi in ppi %}
+                                    <option step="0.01" value="{{ ppi }}">{{ ppi }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            CPU Brand
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="Cpu_brand" required>
+                                <option value="">Cpu_brand</option>
+                                {% for Cpu_brand in Cpu_brand %}
+                                    <option value="{{ Cpu_brand }}">{{ Cpu_brand }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            HDD
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="HDD" required>
+                                <option value="">HDD </option>
+                                {% for HDD in HDD %}
+                                    <option value="{{ HDD }}">{{ HDD }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3 ">
+                            SSD
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="SSD" required>
+                                <option value="">SSD </option>
+                                {% for SSD in SSD %}
+                                    <option value="{{ SSD }}">{{ SSD }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            GPU
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="Gpu_brand" required>
+                                <option value="">Gpu_brand </option>
+                                {% for Gpu_brand in Gpu_brand %}
+                                    <option value="{{ Gpu_brand }}">{{ Gpu_brand }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                            Operating System
+                        </div>
+                        <div class="col-7">
+                            <select class="form-control" name="os" required>
+                                <option value=""> os </option>
+                                {% for os in os %}
+                                    <option value="{{ os }}">{{ os }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-7">
+                            <input type="submit" class="btn btn-success" value="Predict" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</body>
+
+</html>
