@@ -1,5 +1,7 @@
 # Laptoppricepredictor.github.io
 This Website Use to Predict The Price of laptop.
+
+
 #Output-
 ![r1](https://github.com/RiteshKolate21/Laptoppricepredictor.github.io/assets/132751264/c7c16be7-c7fc-4589-bca5-85f634473869)
 ![r2](https://github.com/RiteshKolate21/Laptoppricepredictor.github.io/assets/132751264/19ff3cec-ec04-482d-8b77-a9185b3934e6)
